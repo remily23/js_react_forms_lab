@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Cake from "./Cake.js";
+import Cake from "../components/Cake.js";
 
 const CakeContainer = () => {
 
