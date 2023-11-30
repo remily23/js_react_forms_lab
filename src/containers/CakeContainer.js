@@ -54,14 +54,17 @@ const CakeContainer = () => {
 				rating: 3
 			}
 		]
-
+	// Loops through the cakes array and displays a new Cake component for each object
 	return (
-		<>
-			<Cake />
-			<Cake />
-			<Cake />
-		</>
-	)
+		<div>
+			<h1>Cakes:</h1>
+			{cakes.map((cake) =>
+				<Cake
+					key={cake.cakeName}
+					cake={cake} />)
+			}
+		</div>
+	);
 }
 
 export default CakeContainer;
