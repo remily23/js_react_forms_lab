@@ -1,3 +1,4 @@
+import CakeList from "../components/CakeList.js";
 import { useState } from "react";
 import CakeForm from "../components/CakeForm";
 
@@ -9,12 +10,14 @@ import Cake from "../components/Cake.js";
 
 const CakeContainer = () => {
 
+
+
 	/* 
 	Stores all of the Cake Objects and it's properties 
 	inside of "cakes" Array.
 	*/
 
-	const cakes =
+	const [cakes, setCakes] = useState(
 		[
 			{
 				cakeName: "Victoria Sponge",
@@ -56,16 +59,13 @@ const CakeContainer = () => {
 				rating: 3
 			}
 		]
+	)
 	// Loops through the cakes array and displays a new Cake component for each object
 	return (
-		<div>
+		<>
 			<h1>Cakes:</h1>
-			{cakes.map((cake) =>
-				<Cake
-					key={cake.cakeName}
-					cake={cake} />)
-			}
-		</div>
+			<CakeList cakes={cakes}/>
+		</>
 	);
 }
 
