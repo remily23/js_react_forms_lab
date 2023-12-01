@@ -1,16 +1,11 @@
-import CakeList from "../components/CakeList.js";
 import { useState } from "react";
-import CakeForm from "../components/CakeForm";
-
 /* Updated the file structure by creating
  a containers and components folder */
-import Cake from "../components/Cake.js";
-
+import CakeList from "../components/CakeList.js";
+import CakeForm from "../components/CakeForm";
 
 
 const CakeContainer = () => {
-
-
 
 	/* 
 	Stores all of the Cake Objects and it's properties 
@@ -60,11 +55,35 @@ const CakeContainer = () => {
 			}
 		]
 	)
-	// Loops through the cakes array and displays a new Cake component for each object
+
+	// Takes a newCake an an argument
+	const handleNewCakeSubmission = (newCake) => {
+		/*
+		- spread operator to create a new 
+		  array of cake objects and store
+		  inside of updatedCakes variable
+		- newCake object is pushed inside
+		  of updatedCakes Array
+		- set the cakes Array to updatedCakes
+		  which includes newCake
+		*/
+		const updatedCakes = [...cakes];
+		updatedCakes.push(newCake);
+		setCakes(updatedCakes)
+	}
+
 	return (
 		<>
-			<h1>Cakes:</h1>
-			<CakeList cakes={cakes}/>
+			<h1>The bakeryyyy!</h1>
+			{/* 
+			The prop you pass here HAS
+			to match what you passed in the
+			component's file!
+			 */}
+			<CakeForm onNewCakeSubmission={
+				handleNewCakeSubmission
+			} />
+			<CakeList cakes={cakes} />
 		</>
 	);
 }
